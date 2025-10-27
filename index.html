@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nayyar's Digital Menu</title>
+    <!-- 1. Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensures the sticky nav doesn't hide section titles when jumping */
+        section[id] {
+            scroll-margin-top: 60px; /* Adjust this value to match your sticky nav's height */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 shadow-lg text-center rounded-b-xl">
+        <img src="public/images/logo.jpg" class="mx-auto" alt="Logo">
+    </header>
+
+    <!-- Sticky Category Navigation -->
+    <nav class="sticky top-0 bg-white shadow-md z-10">
+        <div class="container mx-auto px-4 py-2 overflow-x-auto whitespace-nowrap">
+            <a href="#snacks" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Snacks</a>
+            <a href="#pizza" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Pizza</a>
+            <a href="#sandwiches" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Sandwiches</a>
+            <a href="#drinks" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Drinks & Shakes</a>
+            <a href="#ice-cream" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Ice-Cream</a>
+            <a href="#sweets" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Sweets</a>
+            <a href="#coffee-tea" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Coffee & Tea</a>
+            <a href="#bread" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Bread</a>
+        </div>
+    </nav>
+
+    <!-- Main Menu Content -->
+    <main class="container mx-auto p-4 max-w-3xl">
+
+        <!-- Function to create a menu item card -->
+        <script>
+            function createMenuItem(name, price, notes) {
+                // Determine price format
+                let priceText = price.includes("MRP") ? price : `₹${price.replace('/-', '')}`;
+                let notesHTML = notes ? `<p class="text-sm text-gray-600 italic">${notes}</p>` : '';
+
+                return `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                    <div class="p-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">${name}</h3>
+                            ${notesHTML}
+                        </div>
+                        <div class="text-lg font-bold text-amber-700 whitespace-nowrap ml-4">${priceText}</div>
+                    </div>
+                </div>
+                `;
+            }
+        </script>
+
+        <!-- Snacks Section -->
+        <section id="snacks">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Snacks</h2>
+            <div id="snacks-list"></div>
+            <script>
+                const snacks = [
+                    { name: 'Paneer Pakora', price: '160/-', notes: '(8 pc.)' },
+                    { name: 'Paneer Pakora', price: '90/-', notes: '(4 pc.)' },
+                    { name: 'Paneer Fingers', price: '160/-', notes: '(8 pc.)' },
+                    { name: 'Aloo Tikki', price: '90/-', notes: '(4 pc.)' },
+                    { name: 'Burger with Cheese', price: '90/-', notes: '' },
+                    { name: 'Spicy Paneer Burger', price: '140/-', notes: '' },
+                    { name: 'Noodles', price: '170/-', notes: '' },
+                    { name: 'Cheese Noodles', price: '220/-', notes: '' },
+                    { name: 'Hakka Noodles', price: '240/-', notes: '' },
+                    { name: 'Garlic Noodles', price: '250/-', notes: '' },
+                    { name: 'Chilly Garlic Noodles', price: '250/-', notes: '' },
+                    { name: 'Manchurian', price: '290/-', notes: '' },
+                    { name: 'Spring Roll', price: '130/-', notes: '' },
+                    { name: 'Pav Bhaji Butter', price: '130/-', notes: '' },
+                    { name: 'Butter Toast', price: '90/-', notes: '' },
+                    { name: 'Veg. Platter', price: '280/-', notes: '' },
+                    { name: 'Chaana Bhatura', price: '105/-', notes: '' },
+                    { name: 'Tawa Tikki', price: '100/-', notes: '' },
+                    { name: 'Dahi Bhalla', price: '90/-', notes: '' },
+                    { name: 'Bhalla Papri', price: '90/-', notes: '' },
+                    { name: 'Samosa Chaat', price: '60/-', notes: '' },
+                    { name: 'Papri Chaat', price: '90/-', notes: '' },
+                    { name: 'Samosa', price: '40/-', notes: '(2 pc.)' },
+                    { name: 'Veg. Champ', price: '130/-', notes: '' },
+                    { name: 'Malai Champ', price: '170/-', notes: '' },
+                    { name: 'Crispy Veg. Champ', price: '160/-', notes: '' },
+                    { name: 'Paneer Bhurji', price: '300/-', notes: '' },
+                    { name: 'Cheese Chilly', price: '300/-', notes: '' },
+                    { name: 'Mushroom Chilly', price: '300/-', notes: '' },
+                    { name: 'Mushroom Pakora', price: '220/-', notes: '' },
+                    { name: 'French Fries', price: '130/-', notes: '' },
+                    { name: 'Peri Peri Fries', price: '180/-', notes: '' },
+                    { name: 'Cheesy Fries', price: '240/-', notes: '' },
+                ];
+                document.getElementById('snacks-list').innerHTML = snacks.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Pizza Section -->
+        <section id="pizza">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Pizza</h2>
+            <div id="pizza-list"></div>
+            <script>
+                const pizza = [
+                    { name: "Nayyar's Special Pizza", price: '330/-', notes: '' },
+                    { name: 'Cheese Chilly Pizza', price: '350/-', notes: '' },
+                    { name: 'Pizza Mushroom', price: '270/-', notes: '' },
+                    { name: 'Pizza Onion Capsicum', price: '270/-', notes: '' },
+                    { name: 'Plain Pizza', price: '230/-', notes: '' },
+                    { name: 'Corn Pizza', price: '250/-', notes: '' },
+                    { name: 'Farm House Pizza', price: '340/-', notes: '' },
+                ];
+                document.getElementById('pizza-list').innerHTML = pizza.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Sandwiches Section -->
+        <section id="sandwiches">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Sandwiches</h2>
+            <div id="sandwiches-list"></div>
+            <script>
+                const sandwiches = [
+                    { name: 'Grilled Sandwich Brown Bread', price: '230/-', notes: '' },
+                    { name: 'Grilled Sandwich', price: '190/-', notes: '(4 pc.)' },
+                    { name: 'Cheese Grilled Sandwich', price: '260/-', notes: '(4 pc.)' },
+                    { name: 'Club Sandwich', price: '40/-', notes: '' },
+                    { name: 'Cheese Sandwich', price: '60/-', notes: '' },
+                ];
+                document.getElementById('sandwiches-list').innerHTML = sandwiches.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Drinks & Shakes Section -->
+        <section id="drinks">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Drinks & Shakes</h2>
+            <div id="drinks-list"></div>
+            <script>
+                const drinks = [
+                    { name: 'Milk Badam', price: '65/-', notes: '' },
+                    { name: 'Milk Kesar', price: '65/-', notes: '' },
+                    { name: 'Lassi', price: '65/-', notes: '' },
+                    { name: 'Mango Lassi', price: '120/-', notes: 'Seasonal' },
+                    { name: 'Strawberry Shake', price: '140/-', notes: '' },
+                    { name: 'Banana Shake', price: '140/-', notes: '' },
+                    { name: 'Chocolate Shake', price: '150/-', notes: '' },
+                    { name: 'Mango Shake', price: '150/-', notes: 'Seasonal' },
+                    { name: 'Oreo Shake', price: '160/-', notes: '' },
+                    { name: 'Lotus Biscoff Shake', price: '200/-', notes: '' },
+                    { name: 'Butter Scotch Shake', price: '150/-', notes: '' },
+                    { name: 'Kitkat Shake', price: '170/-', notes: '' },
+                    { name: 'Fresh Lime Soda', price: '70/-', notes: '' },
+                    { name: 'Can', price: 'On MRP', notes: '' },
+                    { name: 'Diet Coke', price: '40/-', notes: '' },
+                    { name: 'Juice', price: '40/-', notes: '' },
+                    { name: 'Cold Drink Glass', price: '40/-', notes: '' },
+                    { name: 'Mineral Water', price: 'On MRP', notes: '' },
+                    { name: 'Red Bull', price: 'On MRP', notes: '' },
+                    { name: 'Hell', price: 'On MRP', notes: '' },
+                ];
+                document.getElementById('drinks-list').innerHTML = drinks.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Ice-Cream Section -->
+        <section id="ice-cream">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Ice-Cream</h2>
+            <div id="ice-cream-list"></div>
+            <script>
+                const iceCream = [
+                    { name: 'Lambi Kulfi', price: '50/-', notes: '' },
+                    { name: 'Pista Kulfi', price: '40/-', notes: '' },
+                    { name: 'Matka Kulfi', price: '90/-', notes: '' },
+                    { name: 'Rabri Faluda Glassi', price: '130/-', notes: '' },
+                    { name: 'Tutti Frutti', price: '90/-', notes: '' },
+                    { name: 'Fruit Cream', price: '90/-', notes: '' },
+                    { name: 'Cassata Slice', price: '80/-', notes: '' },
+                    { name: 'Oreo Cup', price: '80/-', notes: '' },
+                    { name: 'Black Current', price: '80/-', notes: '' },
+                    { name: 'Vanilla Cup', price: '70/-', notes: '' },
+                    { name: 'Butter Scotch Cup', price: '80/-', notes: '' },
+                    { name: 'Mango Faluda Glassi', price: '160/-', notes: '' },
+                    { name: 'Mango Duet', price: '20/-', notes: '' },
+                    { name: 'Mango Cup', price: '70/-', notes: '' },
+                    { name: 'Cornetto', price: '40/-', notes: '' },
+                ];
+                document.getElementById('ice-cream-list').innerHTML = iceCream.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Sweets Section -->
+        <section id="sweets">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Sweets</h2>
+            <div id="sweets-list"></div>
+            <script>
+                const sweets = [
+                    { name: 'Gulab Jamun', price: '70/-', notes: '(2 pc.)' },
+                    { name: 'Gajrela', price: '80/-', notes: 'Seasonal' },
+                    { name: 'Spongy Rasgulla', price: '70/-', notes: '(2 pc.)' },
+                    { name: 'Kesar Ras Malai', price: '90/-', notes: '(2 pc.)' },
+                ];
+                document.getElementById('sweets-list').innerHTML = sweets.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Coffee & Tea Section -->
+        <section id="coffee-tea">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Coffee & Tea</h2>
+            <div id="coffee-tea-list"></div>
+            <script>
+                const coffeeTea = [
+                    { name: 'Hot Coffee', price: '70/-', notes: '' },
+                    { name: 'Espresso', price: '100/-', notes: '' },
+                    { name: 'Cold Coffee', price: '140/-', notes: '' },
+                    { name: 'C/Coff & Ice/Crm.', price: '170/-', notes: '' },
+                    { name: 'Tea', price: '30/-', notes: '' },
+                    { name: 'Green Tea', price: '30/-', notes: '' },
+                ];
+                document.getElementById('coffee-tea-list').innerHTML = coffeeTea.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+        <!-- Bread Section -->
+        <section id="bread">
+            <h2 class="text-3xl font-bold text-gray-800 mt-8 mb-6 border-b-2 border-amber-500 pb-2">Bread</h2>
+            <div id="bread-list"></div>
+            <script>
+                const bread = [
+                    { name: 'Bread Slice', price: '10/-', notes: '(2 pc.)' },
+                    { name: 'Pav', price: '20/-', notes: '' },
+                ];
+                document.getElementById('bread-list').innerHTML = bread.map(item => createMenuItem(item.name, item.price, item.notes)).join('');
+            </script>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center p-6 mt-8">
+        <p class="text-base text-gray-700 font-semibold">All prices are including GST</p>
+    </footer>
+
+    <!-- Smooth Scroll JS -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
