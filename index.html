@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,19 @@
     <style>
         /* Ensures the sticky nav doesn't hide section titles when jumping */
         section[id] {
-            scroll-margin-top: 60px; /* Adjust this value to match your sticky nav's height */
+            scroll-margin-top: 60px;
+            /* Adjust this value to match your sticky nav's height */
         }
     </style>
 </head>
+
 <body class="bg-gray-100 font-sans">
 
     <!-- Header -->
     <header class="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 shadow-lg text-center rounded-b-xl">
         <img src="public/images/logo.jpg" class="mx-auto" alt="Logo">
+        <div style="size: 30px; font-weight: bold;">Follow us on Instagram</div>
+        <img src="public/images/instagram.jpg" class="mx-auto" alt="Logo" width="mx-auto">
     </header>
 
     <!-- Sticky Category Navigation -->
@@ -25,11 +30,15 @@
         <div class="container mx-auto px-4 py-2 overflow-x-auto whitespace-nowrap">
             <a href="#snacks" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Snacks</a>
             <a href="#pizza" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Pizza</a>
-            <a href="#sandwiches" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Sandwiches</a>
-            <a href="#drinks" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Drinks & Shakes</a>
-            <a href="#ice-cream" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Ice-Cream</a>
+            <a href="#sandwiches"
+                class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Sandwiches</a>
+            <a href="#drinks" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Drinks &
+                Shakes</a>
+            <a href="#ice-cream"
+                class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Ice-Cream</a>
             <a href="#sweets" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Sweets</a>
-            <a href="#coffee-tea" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Coffee & Tea</a>
+            <a href="#coffee-tea" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Coffee
+                & Tea</a>
             <a href="#bread" class="inline-block py-2 px-4 font-semibold text-gray-700 hover:text-amber-600">Bread</a>
         </div>
     </nav>
@@ -64,10 +73,10 @@
             <div id="snacks-list"></div>
             <script>
                 const snacks = [
-                    { name: 'Paneer Pakora', price: '160/-', notes: '(8 pc.)' },
-                    { name: 'Paneer Pakora', price: '90/-', notes: '(4 pc.)' },
+                    { name: 'Paneer Pakora', price: '160/-', notes: '(8 pc.) Soft cubes of paneer filled with our signature Nayyar special spices, coated in a light gram flour (besan) batter, and deep-fried to golden perfection.' },
+                    { name: 'Paneer Pakora', price: '90/-', notes: '(4 pc.)  Soft cubes of paneer filled with our signature Nayyar special spices, coated in a light gram flour (besan) batter, and deep-fried to golden perfection.' },
                     { name: 'Paneer Fingers', price: '160/-', notes: '(8 pc.)' },
-                    { name: 'Aloo Tikki', price: '90/-', notes: '(4 pc.)' },
+                    { name: 'Aloo Tikki', price: '90/-', notes: '(2 pc.)' },
                     { name: 'Burger with Cheese', price: '90/-', notes: '' },
                     { name: 'Spicy Paneer Burger', price: '140/-', notes: '' },
                     { name: 'Noodles', price: '170/-', notes: '' },
@@ -149,7 +158,7 @@
                     { name: 'Strawberry Shake', price: '140/-', notes: '' },
                     { name: 'Banana Shake', price: '140/-', notes: '' },
                     { name: 'Chocolate Shake', price: '150/-', notes: '' },
-                    { name: 'Mango Shake', price: '150/-', notes: 'Seasonal' },
+                    { name: 'Mango Shake', price: '150/-', notes: '' },
                     { name: 'Oreo Shake', price: '160/-', notes: '' },
                     { name: 'Lotus Biscoff Shake', price: '200/-', notes: '' },
                     { name: 'Butter Scotch Shake', price: '150/-', notes: '' },
@@ -261,6 +270,5 @@
     </script>
 
 </body>
+
 </html>
-
-
